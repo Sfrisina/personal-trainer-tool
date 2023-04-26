@@ -1,0 +1,57 @@
+<%- include('partials/header') -%> 
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class=" col-10 w-50">
+      <h2><%= r_client.name %></h2>
+      <div class="row justify-content-center">
+        <%if(r_client.user == user.id){ %>
+        <%}%>
+      <p>Long Term Goals: <%= r_client.goals %></p>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Daily Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(var i=0; i<dailyLog.length; i++) {%>
+              <td><%= dailyLog[i].createdAt.toLocaleDateString() %></td>
+              <td><a href="/client/dailylog/<%= dailyLog[i]._id%>"><%= dailyLog[i].todayGoal %></a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <!-- <ul class="commentList mt-4">
+        <% for(var i=0; i<dailyLog.length; i++) {%>
+          <li class="col-10 justify-content-between">
+           <a class="dateTag" href=""><%= dailyLog[i].createdAt.toLocaleDateString() %></a>
+           <a href="/client/dailylog/<%= dailyLog[i]._id%>"><%= dailyLog[i].todayGoal %></a>
+          </li>
+        <% } %>
+      </ul> -->
+      </div>
+    </div>
+    <div class="mt-5 w-25">
+      <h2>Daily Log</h2>
+      <form action="/dailyLog/createDailyLog/<%= r_client.id%>" method="POST">
+        <div class="mb-3">
+            <label for="todayGoal" class="form-label">Today's Goal</label>
+            <input type="text" class="form-control" id="todayGoal" name="todayGoal">
+        </div>
+        <div class="mb-3">
+            <label for="notes" class="form-label">notes</label>
+            <input type="text" class="form-control" id="notes" name="notes">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col-6 mt-5">
+      <a class="btn btn-primary" href="/profile">Return to Profile</a>
+      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

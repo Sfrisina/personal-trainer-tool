@@ -1,0 +1,72 @@
+<%- include('partials/header') -%> 
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class=" col-10 w-50">
+      <h2><a href='/client/<%=myClient.id %>'><%= myClient.name %></a></h2>
+      <div class="row justify-content-center">
+      <p> Long-term Goals: <%= myClient.goals %></p>
+      <p>Todays Goal :<%= dailyLog.todayGoal %></p>
+      <span><%= dailyLog.createdAt.toLocaleDateString() %></span>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Workout</th>
+            <th scope="col">Sets</th>
+            <th scope="col">Reps</th>
+            <th scope="col">weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(var i=0; i<workout.length; i++) {%>
+            <td><%= workout[i].workout %></td>
+            <td><%= workout[i].sets %></td>
+            <td><%= workout[i].reps %></td>
+            <td><%= workout[i].weight %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <!-- <ul class="commentList mt-4">
+        <% for(var i=0; i<workout.length; i++) {%>
+          <li class="col-10 justify-content-between">
+            <a class="dateTag" href=""><%= workout[i].createdAt.toLocaleDateString() %></a>
+            <a href=""><%= workout[i].workout %></a>
+          </li>
+          <li>Sets <%= workout[i].sets %></li>
+          <li>Reps <%= workout[i].reps %></li>
+          <li>weight <%= workout[i].weight %></li>
+        <% } %>
+      </ul> -->
+      </div>
+    </div>
+    <div class="mt-5 w-25">
+      <h2>Add a workout</h2>
+      <form action="/dailylog/createWorkout/<%= dailyLog.id%>" method="POST">
+        <div class="mb-3">
+            <label for="workout" class="form-label">Workout</label>
+            <input type="text" class="form-control" id="workout" name="workout">
+        </div>
+        <div class="mb-3">
+            <label for="sets" class="form-label">Sets</label>
+            <input type="text" class="form-control" id="sets" name="sets">
+        </div>
+        <div class="mb-3">
+            <label for="reps" class="form-label">Reps</label>
+            <input type="text" class="form-control" id="reps" name="reps">
+        </div>
+        <div class="mb-3">
+            <label for="weight" class="form-label">Weight</label>
+            <input type="text" class="form-control" id="weight" name="weight">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col-6 mt-5">
+      <a class="btn btn-primary" href="/profile">Return to Profile</a>
+      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>
