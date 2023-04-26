@@ -23,7 +23,29 @@
           </div>
       </div>
       <div class="col-6">
-        <ul class="col list-unstyled">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Clients</th>
+              <th scope="col">Goals</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% for(var i=0; i<clients.length; i++) {%>
+                <td>
+                  <a href="/client/<%= clients[i]._id%>">
+                      <%= clients[i].name%>
+                  </a>
+                </td>
+                <td>
+                    <%= clients[i].goals%>
+                </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <!-- <ul class="col list-unstyled">
         <% for(var i=0; i<clients.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
             <a href="/client/<%= clients[i]._id%>">
@@ -31,7 +53,7 @@
             </a>
           </li>
         <% } %>
-        </ul>
+        </ul> -->
         <div class="row justify-content-center mt-5">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
         </div>  

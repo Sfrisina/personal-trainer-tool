@@ -9,9 +9,7 @@ module.exports = {
         const myClient = await Client.findOne(dailyLog.client)
         const workout = await Workout.find({dailyLog: req.params.id}).sort({ createdAt: "desc" }).lean();
         res.render('dailyLog.ejs', {dailyLog: dailyLog, myClient:myClient, workout: workout})
-        console.log(req)
-        console.log(dailyLog)
-        console.log(workout)
+
     } catch (err){
         console.log(err)
     }
