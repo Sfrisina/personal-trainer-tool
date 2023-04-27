@@ -7,6 +7,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get("/:id", dailyLogController.getDailyLog)
 router.post("/createDailyLog/:id", dailyLogController.createDailyLog);
 router.post("/createWorkout/:id", dailyLogController.createWorkout)
+router.delete("/deleteWorkout/:id", dailyLogController.deleteWorkout)
 
 
 

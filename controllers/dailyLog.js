@@ -9,7 +9,7 @@ module.exports = {
         const myClient = await Client.findOne(dailyLog.client)
         const workout = await Workout.find({dailyLog: req.params.id}).sort({ createdAt: "desc" }).lean();
         res.render('dailyLog.ejs', {dailyLog: dailyLog, myClient:myClient, workout: workout})
-
+        console.log(dailyLog)
     } catch (err){
         console.log(err)
     }
@@ -44,4 +44,17 @@ module.exports = {
       console.log(err);
     }
   },
-};
+  deleteWorkout: async (req, res) => {
+    try {
+      // Find post by id
+      // Delete post from db
+      const workout = await Workout.findById(req.params.id)
+                      await workout.remove();
+      console.log("Deleted workout");
+      console.log(req);
+      res.redirect("/profile");
+    } catch (err) {
+      res.redirect("/profile");
+    }
+}
+}
