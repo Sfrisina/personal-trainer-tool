@@ -5,7 +5,7 @@
       <h2><a class="btn btn-dark" href='/client/<%=myClient.id %>'><%= myClient.name %></a></h2>
       <div class="row justify-content-center">
       <p> Long-term Goals: <%= myClient.goals %></p>
-      <p>Todays Goal :<%= dailyLog.todayGoal %></p>
+      <p>Todays Goal: <%= dailyLog.todayGoal %></p>
       <span><%= dailyLog.createdAt.toLocaleDateString() %></span>
       <table class="table">
         <thead class="thead-dark">
@@ -60,8 +60,7 @@
       </form>
     </div>
     <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+      <a class="btn btn-primary" href='/client/<%=myClient.id %>'>Return to Client Profile</a>
     </div>
   </div>
 </div>

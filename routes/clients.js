@@ -14,6 +14,6 @@ router.post("/createClient", clientController.createClient);
 
 router.put("/likePost/:id", clientController.likePost);
 
-router.delete("/deletePost/:id", clientController.deletePost);
+router.delete("/deleteDailyLog/:id", clientController.deleteDailyLog);
 
 module.exports = router;

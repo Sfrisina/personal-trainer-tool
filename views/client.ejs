@@ -18,7 +18,15 @@
           <tr>
             <% for(var i=0; i<dailyLog.length; i++) {%>
               <td><%= dailyLog[i].createdAt.toLocaleDateString() %></td>
-              <td><a href="/client/dailylog/<%= dailyLog[i]._id%>"><%= dailyLog[i].todayGoal %></a></td>
+              <td><a class="btn btn-dark" href="/client/dailylog/<%= dailyLog[i]._id%>"><%= dailyLog[i].todayGoal %></a></td>
+              <td><%= dailyLog[i].notes %></a></td>
+              <td><form
+                action="/client/deleteDailyLog/<%= dailyLog[i]._id %>?_method=DELETE"
+                method="POST"
+                class="col-3"
+              >
+                <button class="btn btn-primary fa fa-trash" type="submit"></button>
+              </form></td>
           </tr>
           <% } %>
         </tbody>
@@ -41,7 +49,6 @@
     </div>
     <div class="col-6 mt-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
     </div>
   </div>
 </div>
